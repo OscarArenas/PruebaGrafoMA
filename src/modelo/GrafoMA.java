@@ -19,7 +19,7 @@ package modelo;
 import java.util.ArrayList;
 
 /**
- * GrafoMA simple, ponderado y sin lazos implementado mediante matriz de
+ * Grafo simple, no ponderado y sin lazos implementado mediante matriz de
  * adyacencia.
  *
  * @author Oscar Arenas
@@ -152,7 +152,16 @@ public class GrafoMA implements IGrafo {
 
     @Override
     public ArrayList<Integer> adyacentes(int vertice) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<Integer> vecinos = new ArrayList<>();
+
+        if (existeVertice(vertice)) {
+            for (int i = 0; i < matrizAdyacencia.length; i++) {
+                if (matrizAdyacencia[vertice][i] != 0) {
+                    vecinos.add(i);
+                }
+            }
+        }
+        return vecinos;
     }
 
     @Override
@@ -172,7 +181,7 @@ public class GrafoMA implements IGrafo {
 
     @Override
     public int cantidadVertices() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return matrizAdyacencia.length;
     }
 
     @Override

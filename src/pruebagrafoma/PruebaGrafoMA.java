@@ -16,8 +16,9 @@
  */
 package pruebagrafoma;
 
+import modelo.BreadthFirstSearch;
+import modelo.DepthFirstSearch;
 import modelo.GrafoMA;
-import modelo.GrafoMAP;
 
 /**
  *
@@ -29,25 +30,41 @@ public class PruebaGrafoMA {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        GrafoMA grafo = new GrafoMA(7);
+        GrafoMA grafo = new GrafoMA(6);
 
-        grafo.agregarArista(4, 3);
-        grafo.agregarArista(4, 5);
-        grafo.agregarArista(0, 1);
-        grafo.agregarArista(2, 1);
+        grafo.agregarArista(0, 2);
+        grafo.agregarArista(0, 4);
+        grafo.agregarArista(0, 5);
+        grafo.agregarArista(4, 1);
+        grafo.agregarArista(2, 5);
+        grafo.agregarArista(2, 4);
+        grafo.agregarArista(2, 3);
+        grafo.agregarArista(3, 4);
         grafo.agregarArista(3, 5);
-        grafo.agregarArista(6, 1);
+        grafo.agregarArista(5, 4);
 
-        System.out.println("Grafo no ponderado:");
         System.out.println(grafo);
 
-        GrafoMAP grafo2 = new GrafoMAP(5);
+        System.out.println("DFS:");
+        DepthFirstSearch dfs = new DepthFirstSearch(grafo, 3);
 
-        grafo2.agregarArista(2, 3, 76);
-        grafo2.agregarArista(4, 3);
-        grafo2.agregarArista(0, 1, 1.2);
+        System.out.println("Tiene ruta?: " + dfs.hasPathTo(5));
 
-        System.out.println("Grafo ponderado:");
-        System.out.println(grafo2);
+        Iterable<Integer> path = dfs.pathTo(5);
+
+        for (Integer w : path) {
+            System.out.println(w);
+        }
+
+        System.out.println("BFS:");
+        BreadthFirstSearch bfs = new BreadthFirstSearch(grafo, 3);
+
+        System.out.println("Tiene ruta?: " + dfs.hasPathTo(1));
+
+        path = bfs.pathTo(1);
+
+        for (Integer w : path) {
+            System.out.println(w);
+        }
     }
 }

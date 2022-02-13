@@ -19,6 +19,8 @@ package modelo;
 import java.util.ArrayList;
 
 /**
+ * Grafo simple, ponderado y sin lazos implementado mediante matriz de
+ * adyacencia.
  *
  * @author Oscar Arenas
  */
@@ -175,12 +177,11 @@ public class GrafoMAP implements IGrafo {
 
     @Override
     public int cantidadAristas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return aristas;
     }
 
     @Override
     public boolean agregarVertice() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
 }
